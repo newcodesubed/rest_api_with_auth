@@ -6,8 +6,7 @@ import compression from "compression";
 import cors from "cors";
 import mongoose from "mongoose";
 import 'dotenv/config';
-import { configDotenv } from "dotenv";
-import { env } from "process";
+
 const app = express();
 
 app.use(cors({
