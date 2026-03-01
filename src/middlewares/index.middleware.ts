@@ -4,6 +4,7 @@ import { get, merge } from "lodash";
 
 export const isOwner = async (req: Request, res: Response, next: NextFunction) =>{
   const {id}= req.params;
+  // req.identity?._id
   const currentUserId = get(req, 'identity._id') as string;
   if(!currentUserId){
     return res.sendStatus(403);
@@ -32,7 +33,7 @@ export const isAuthenticated = async (
     if (!existingUser) {
       return res.sendStatus(403);
     }
-
+    // req.identity = existingUser;
     merge(req, { identity: existingUser });
 
     return next();
