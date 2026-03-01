@@ -1,6 +1,6 @@
-import { createUser, getUserByEmail } from "db/users";
+import { createUser, getUserByEmail } from "../db/users";
 import { Request, Response } from "express";
-import { authentication, random } from "helpers/index.helper";
+import { authentication, random } from "../helpers/index.helper";
 
 export const register = async (req: Request, res: Response) => {
   try {
@@ -12,7 +12,7 @@ export const register = async (req: Request, res: Response) => {
 
     const existingUser = await getUserByEmail(email);
     if (existingUser) {
-      return res.sendStatus(400).json({ message: "User already exist" });
+      return res.status(400).json({ message: "User already exist" });
     }
 
     const salt = random();
@@ -24,7 +24,7 @@ export const register = async (req: Request, res: Response) => {
         password: authentication(salt, password),
       },
     });
-    return res.sendStatus(200).json(user).end();
+    return res.status(200).json(user);
   } catch (error) {
     console.log("Error in register controller", error);
     return res.sendStatus(400);

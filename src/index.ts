@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Router } from "express";
 import http from 'http';
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
@@ -6,6 +6,7 @@ import compression from "compression";
 import cors from "cors";
 import mongoose from "mongoose";
 import 'dotenv/config';
+import router from "./routers/index.route";
 
 const app = express();
 
@@ -35,3 +36,5 @@ mongoose.connection.on("error", err => {
 mongoose.connection.on("disconnected", () => {
   console.warn("Mongo disconnected");
 });
+
+app.use('/', router())
