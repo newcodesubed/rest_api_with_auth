@@ -15,10 +15,12 @@
     "@types/cookie-parser": "^1.4.10",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
+    "@types/lodash": "^4.17.24",
+    "lodash": "^4.17.23",
     "nodemon": "^3.1.14",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
-  }, 
+  },
   "dependencies": {
     "body-parser": "^2.2.2",
     "compression": "^1.8.1",
